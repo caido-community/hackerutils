@@ -61,5 +61,4 @@ const onClear = () => {
       <Textarea v-model="output" class="h-full resize-none" rows="50" />
     </div>
   </div>
-
 </template>

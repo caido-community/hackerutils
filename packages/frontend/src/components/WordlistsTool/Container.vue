@@ -56,7 +56,7 @@ const generate = async () => {
   if (mode.value === "url-encoded") {
     const list = Array.from(
       { length: 256 },
-      (_v, i) => `%${i.toString(16).toUpperCase().padStart(2, "0")}`
+      (_v, i) => `%${i.toString(16).toUpperCase().padStart(2, "0")}`,
     );
     result.value = list.join("\n");
     return;
@@ -65,14 +65,13 @@ const generate = async () => {
   if (mode.value === "unicode-encoded") {
     const list = Array.from(
       { length: 256 },
-      (_v, i) => `\\u${i.toString(16).toUpperCase().padStart(4, "0")}`
+      (_v, i) => `\\u${i.toString(16).toUpperCase().padStart(4, "0")}`,
     );
     result.value = list.join("\n");
     return;
   }
 
-  const url =
-    urls[mode.value as Exclude<ListId, "url-encoded" | "unicode-encoded">];
+  const url = urls[mode.value];
   if (url === undefined) {
     sdk.window.showToast("Unknown source", { variant: "error" });
     return;

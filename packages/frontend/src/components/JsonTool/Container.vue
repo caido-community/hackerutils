@@ -21,7 +21,7 @@ const parseSmartJson = (raw: string): unknown => {
     let val: unknown = first;
     let depth = 0;
     while (typeof val === "string" && depth < 3) {
-      const inner = (val as string).trim();
+      const inner = val.trim();
       try {
         val = JSON.parse(inner);
         depth += 1;

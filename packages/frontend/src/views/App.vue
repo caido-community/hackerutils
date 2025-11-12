@@ -6,12 +6,12 @@ import SplitterPanel from "primevue/splitterpanel";
 import { type Component, computed, ref } from "vue";
 
 import { Base64Tool } from "@/components/Base64Tool";
+import { JsonEscapeTool } from "@/components/JsonEscapeTool";
 import { JsonTool } from "@/components/JsonTool";
 import { TimestampTool } from "@/components/TimestampTool";
 import { UrlTool } from "@/components/UrlTool";
 import { UuidTool } from "@/components/UuidTool";
 import { WordlistsTool } from "@/components/WordlistsTool";
-import { JsonEscapeTool } from "@/components/JsonEscapeTool";
 
 type Page = {
   id: string;
@@ -43,7 +43,7 @@ const pages = ref<Page[]>([
 const activeId = ref<string>(pages.value[0]!.id);
 
 const current = computed(() =>
-  pages.value.find((p) => p.id === activeId.value)
+  pages.value.find((p) => p.id === activeId.value),
 );
 </script>
 
@@ -61,11 +61,7 @@ const current = computed(() =>
         >
           <template #content>
             <div class="h-full flex flex-col">
-              <div
-                class="p-3 font-bold border-b border-surface-700"
-              >
-                Tools
-              </div>
+              <div class="p-3 font-bold border-b border-surface-700">Tools</div>
               <div class="p-2 h-full">
                 <Listbox
                   v-model="activeId"
@@ -73,7 +69,7 @@ const current = computed(() =>
                   option-label="name"
                   option-value="id"
                   class="w-full h-fit"
-                  listStyle="max-height:500px"
+                  list-style="max-height:500px"
                 >
                   <template #option="{ option }">
                     <div class="flex items-center gap-2">
